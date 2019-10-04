@@ -1,4 +1,4 @@
-root:!*:17920:0:99999:7:::
+root:$6$e9JR1RBQ$ihtgWVnAe1XLzy1ao7PGPRZgkwcEJxUpYANkrhzLPSgN/rpdb.SkSvx7ksUsFUHuUSfj0TIdoP8lPXREvVhyR.:18159:0:99999:7:::
 daemon:*:17920:0:99999:7:::
 bin:*:17920:0:99999:7:::
 sys:*:17920:0:99999:7:::
