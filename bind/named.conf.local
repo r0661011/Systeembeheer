@@ -2,6 +2,16 @@
 // Do any local configuration here
 //
 
+zone "ewald-bervoets.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/db.ewald-bervoets.sb.uclllabs.be";
+	allow-transfer{
+		193.191.177.254;
+		193.191.177.211;
+	};
+};		
+		
+
 // Consider adding the 1918 zones here, if they are not used in your
 // organization
 //include "/etc/bind/zones.rfc1918";
