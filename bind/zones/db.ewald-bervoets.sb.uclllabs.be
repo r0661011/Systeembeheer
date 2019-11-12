@@ -16,4 +16,6 @@ ewald-bervoets.sb.uclllabs.be.	IN	NS	ns2.uclllabs.be.
 ns				IN	A	193.191.177.211
 @				IN	A	193.191.177.211
 www				IN	A	193.191.177.211
+www1				IN	A	193.191.177.211
+www2				IN	A	193.191.177.211
 test				IN 	A 	193.191.177.254
