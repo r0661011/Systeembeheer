@@ -3,7 +3,7 @@
 ;
 $TTL	604800
 @	IN	SOA	ewald-bervoets.sb.uclllabs.be. root.ewald-bervoets.sb.uclllabs.be. (
-			      6		; Serial
+			     12		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
