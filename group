@@ -56,3 +56,4 @@ ntp:x:115:
 bind:x:116:
 ftp:x:117:
 mystery1_2014:x:1001:
+mysql:x:118:
