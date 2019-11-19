@@ -3,7 +3,7 @@
 ;
 $TTL	604800
 @	IN	SOA	ewald-bervoets.sb.uclllabs.be. root.ewald-bervoets.sb.uclllabs.be. (
-			     13		; Serial
+			    430		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -21,3 +21,8 @@ www2				IN	A	193.191.177.211
 test				IN 	A 	193.191.177.254
 secure				IN	A	193.191.177.211
 supersecure			IN	A	193.191.177.211
+
+ewald-bervoets.sb.uclllabs.be.	IN	CAA	0 issue "letsencrypt.org"
+ewald-bervoets.sb.uclllabs.be.	IN	CAA	0 iodef "mailto:ewald.bervoets@student.ucll.be"
+
+
