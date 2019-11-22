@@ -1,0 +1,46 @@
+#/bin/bash
+
+domain=$1
+mydate=$(date +%Y%m%d)
+
+echo "\$TTL 300
+@       IN  SOA  ns.$domain.ewald-bervoets.sb.uclllabs.be.be. root.$domain.ewald-bervoets.sb.uclllabs.be.(
+                                        $mydate"1"      ; Serial
+                                        604800          ; Refresh
+                                        600             ; Retry
+                                        2419200         ; Expire
+                                        604800 )        ; Negative Cache TTL
+;
+@               IN      NS      ns.$domain.ewald-bervoets.sb.uclllabs.be.
+@               IN      NS      ns.ewald-bervoets.sb.uclllabs.be.
+ns              IN      A       193.191.177.211
+@               IN      A       193.191.177.211" > /etc/bind/zones/db.$domain.ewald-bervoets.sb.uclllabs.be
+
+
+echo "Add zone to named.conf.local."
+
+echo "zone \"$domain.ewald-bervoets.sb.uclllabs.be\" {
+        type master;
+        file \"/etc/bind/zones/db.$domain.ewald-bervoets.sb.uclllabs.be\";
+        notify yes;
+};
+" >> /etc/bind/named.conf.local
+
+
+
+
+echo "Add NS record to db.ewald-bervoets.sb.uclllabs.be."
+
+echo "$domain                IN      NS      ns.ewald-bervoets.sb.uclllabs.be." >> /etc/bind/zones/db.ewald-bervoets.sb.uclllabs.be
+
+serialline=$(grep "Serial" /etc/bind/zones/db.ewald-bervoets.sb.uclllabs.be)
+serialnumber=$(echo $serialline | cut -d \; -f 1)
+newserialnumber=$((serialnumber + 1))
+newserial="$newserialnumber         ; Serial"
+echo "new Serial: $newserial";
+sed -i "s/.*Serial.*/\t\t\t     $newserial/g" /etc/bind/zones/db.ewald-bervoets.sb.uclllabs.be
+echo "serial updated, restarting bind9"
+
+systemctl restart bind9
+
+echo "Done."
