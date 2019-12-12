@@ -28,3 +28,15 @@ virtual_mailbox_domains = mysql:/etc/postfix/mysql-virtual-mailbox-domains.cf
 virtual_mailbox_maps = mysql:/etc/postfix/mysql-virtual-mailbox-maps.cf
 virtual_alias_maps = mysql:/etc/postfix/mysql-virtual-alias-maps.cf,
         mysql:/etc/postfix/mysql-virtual-email2email.cf
+
+smtpd_tls_cert_file=/etc/letsencrypt/live/secure.stijn-taelemans.sb.uclllabs.be/fullchain.pem
+smtpd_tls_key_file=/etc/letsencrypt/live/secure.stijn-taelemans.sb.uclllabs.be/privkey.pem
+smtpd_tls_security_level=may
+smtpd_tls_protocols = !SSLv2, !SSLv3 !TLSv1
+smtpd_tls_loglevel = 1
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+smtp_tls_security_level = may
+smtp_tls_loglevel = 1
+smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+mailbox_transport = lmtp:unix:private/dovecot-lmtp
+smtputf8_enable = no

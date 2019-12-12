@@ -3,7 +3,7 @@
 ;
 $TTL	300	
 @	IN	SOA	ns.ewald-bervoets.sb.uclllabs.be. admin.ewald-bervoets.sb.uclllabs.be. (
-			     2787681         ; Serial
+			4200323         ; Serial
 			    300		; Refresh
 			    300		; Retry
 			    300		; Expire
@@ -22,6 +22,9 @@ www2				IN	A	193.191.177.211
 test				IN 	A 	193.191.177.254
 secure				IN	A	193.191.177.211
 supersecure			IN	A	193.191.177.211
+@				IN 	MX	10      mx.ewald-bervoets.sb.uclllabs.be.
+mx                              IN      A       193.191.177.211
+
 
 @				IN	CAA	0 issue "letsencrypt.org"
 @				IN	CAA	0 iodef "mailto:ewald.bervoets@student.ucll.be"	
