@@ -12,8 +12,7 @@ mkdir "/var/log/apache2/$1"
 echo    "<VirtualHost *:80>
                 ServerName $1
                 DocumentRoot "/var/www/html/$1"
-                ErrorLog "/var/log/apache2/$1.log"
-                CustomLog "/var/log/apache2/$1.log" combined
+                CustomLog "/var/log/apache2/$1.log"
         </VirtualHost>" > "/etc/apache2/sites-available/$1.conf"
 
 subdomain=$(echo $1 | grep -oP ".*(?=(\.ewald-bervoets))")
