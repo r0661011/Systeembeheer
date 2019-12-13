@@ -5,18 +5,18 @@ if [ "$EUID" -ne 0 ]; then
         exit
 fi
 
-
 mkdir "/var/www/html/$1"
 mkdir "/var/log/apache2/$1"
 
 echo    "<VirtualHost *:80>
                 ServerName $1
                 DocumentRoot "/var/www/html/$1"
-                CustomLog "/var/log/apache2/$1.log"
-        </VirtualHost>" > "/etc/apache2/sites-available/$1.conf"
+         </VirtualHost>" > "/etc/apache2/sites-available/$1.conf"
 
 subdomain=$(echo $1 | grep -oP ".*(?=(\.ewald-bervoets))")
 echo "welcome $subdomain" > "/var/www/html/$1/index.html"
+
+
 
 a2ensite $1 > /dev/null
 systemctl reload apache2

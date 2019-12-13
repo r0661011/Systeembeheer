@@ -26,9 +26,6 @@ echo "zone \"$domain.ewald-bervoets.sb.uclllabs.be\" {
 };
 " >> /etc/bind/named.conf.local
 
-
-
-
 echo "Add NS record to db.ewald-bervoets.sb.uclllabs.be."
 
 echo "$domain                IN      NS      ns.ewald-bervoets.sb.uclllabs.be." >> /etc/bind/zones/db.ewald-bervoets.sb.uclllabs.be
@@ -39,8 +36,5 @@ newserialnumber=$((serialnumber + 1))
 newserial="$newserialnumber         ; Serial"
 echo "new Serial: $newserial";
 sed -i "s/.*Serial.*/\t\t\t     $newserial/g" /etc/bind/zones/db.ewald-bervoets.sb.uclllabs.be
-echo "serial updated, restarting bind9"
 
 systemctl restart bind9
-
-echo "Done."
